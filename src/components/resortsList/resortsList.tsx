@@ -10,6 +10,7 @@ const ResortsList: React.FC<ResortsProps> = ({ resorts }: ResortsProps) => {
     <ListWraper>
       {resorts.map((item) => (
         <ResortCard
+          key={item.id}
           id={item.id}
           title={item.title}
           description={item.description}

@@ -1,3 +1,5 @@
+const { off } = require("process");
+
 module.exports = {
     parser: "@typescript-eslint/parser", // Specifies the ESLint parser
     parserOptions: {
@@ -20,6 +22,10 @@ module.exports = {
     rules: {
       // Place to specify ESLint rules. Can be used to overwrite rules specified from the extended configs
       // e.g. "@typescript-eslint/explicit-function-return-type": "off",
-      'prettier/prettier': 0,
+      "prettier/prettier": "off",
+      "react/react-in-jsx-scope": "off",
+      // allow jsx syntax in js files (for next.js project)
+     "react/jsx-filename-extension": [1, { "extensions": [".ts", ".tsx"] }], //should add ".ts" if typescript project
+  
     },
   };
