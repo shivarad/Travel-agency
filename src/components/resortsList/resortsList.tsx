@@ -2,13 +2,13 @@ import ResortCard from "../resortCard/resortCard";
 import { Resort } from "../../interfaces";
 import {ListWraper} from "./resortListStyles"
 interface ResortsProps {
-  resorts: Resort[];
+  resorts: Resort[] |null;
 }
 
 const ResortsList: React.FC<ResortsProps> = ({ resorts }: ResortsProps) => {
   return (
     <ListWraper>
-      {resorts.map((item) => (
+      {resorts?resorts.map((item) => (
         <ResortCard
           key={item.id}
           id={item.id}
@@ -17,7 +17,7 @@ const ResortsList: React.FC<ResortsProps> = ({ resorts }: ResortsProps) => {
           price={item.price}
           imageUrl={item.imageUrl}
         />
-      ))}
+      )):null}
     </ListWraper>
   );
 };
