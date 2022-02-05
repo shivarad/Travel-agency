@@ -10,6 +10,7 @@ padding:8px;
 border:1px solid gray;
 border-radius:8px 0 0 8px ;
 outline: none;
+margin-right:0 !important;
   &:focus{
     border: 1px solid #008ABF;
     transition: 0.35s ease;
@@ -21,12 +22,16 @@ outline: none;
 `
 
 export const SearchBtn=styled.button`
-height:50px;
+height:49px;
 width:45px;
 color:white;
 background:#558564;
 padding:8px;
 border-radius:0 8px 8px 0;
 font-size:1rem;
+margin-left:0 !important;
+&:hover {
+  background-color: #564946;
+}
 
 `

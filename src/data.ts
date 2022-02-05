@@ -43,7 +43,7 @@ const Data=[
     },
     {
       "id": 6,
-      "title": "andBeyond Phinda Private Game Reserve — Phinda Private Game Reserve, South Africa",
+      "title": "Beyond Phinda Private Game Reserve — Phinda Private Game Reserve, South Africa",
       "description": "This 70,560-acre private game reserve sits in northern KwaZulu-Natal, not far from the Indian Ocean on the east coast of South Africa, and features multiple andBeyond lodges on site: Phinda Forest Lodge, Phinda Mountain Lodge, Phinda Rock Lodge, Phinda Vlei Lodge, Phinda Zuka Lodge, and Phinda Homestead. At Phinda Rock Lodge, expansive views of the surrounding ecosystem from all of the six suites with private plunge pools provide the perfect opportunity to view the Big Five from afar. Meals are served on an open deck—a classic way to take in sundowners and listen to the forest’s percussive sounds, like the chatter of monkeys or the chirping of red Tonga squirrels. ",
       "price": "524$",
       "imageUrl": "https://media.cntraveler.com/photos/5ad7981718e93c3d9795d537/master/w_400%2Cc_limit/andBeyond-Phinda-Private-Game-Reserve_Phinda-Rock-Lodge-_courtesy-andBeyond.com_2018_Guest-area-views-at-Phinda-Rock-Lodge-(3).jpg"

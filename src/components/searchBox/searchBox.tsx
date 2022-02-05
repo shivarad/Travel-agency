@@ -8,13 +8,12 @@ const SearchBox = (props: {
   handleClick: React.MouseEventHandler<HTMLButtonElement>;
 }) => {
   return (
-    <>
+    <div style={{width:"fit-content"}}>
       <SearchInput placeholder="Search..." onChange={props.onChange} />
-      
       <SearchBtn onClick={props.handleClick}>
         <FontAwesomeIcon icon={faSearch} />
       </SearchBtn>
-    </>
+    </div>
   );
 };
 

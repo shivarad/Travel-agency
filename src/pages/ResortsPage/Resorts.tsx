@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from "react";
+import { FilterBar } from "./ResortsStyles";
 import { Resort } from "../../interfaces";
 import { sortArrayOfObjects } from "../../utils";
 import ResortsList from "../../components/resortsList/resortsList";
 import Data from "../../data";
 import SearchBox from "../../components/searchBox/searchBox";
 import Select from "../../components/select/select";
+import CustomBtn from "../../components/CustomBtn/CustomBtn";
 
 const Resorts = () => {
   const [resorts, setResorts] = useState<Resort[] | null>(Data);
@@ -92,7 +94,7 @@ const Resorts = () => {
 
   return (
     <>
-      <div style={{ height: "200px", margin: "20px" }}>
+      <FilterBar >
         <SearchBox handleClick={filterData} onChange={handleSearchChange} />
         <Select
           Hint="Filter by price"
@@ -113,7 +115,8 @@ const Resorts = () => {
             { title: "Title", value: "title" },
           ]}
         />
-      </div>
+        <CustomBtn label="Reset Filter"/>
+      </FilterBar>
       <ResortsList
         resorts={resorts}
       />

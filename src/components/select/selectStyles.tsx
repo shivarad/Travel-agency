@@ -7,5 +7,5 @@ font-size:1rem;
 border:1px solid gray;
 border-radius:8px;
 outline: none;
-margin: 20px;
+margin:10px;
 `

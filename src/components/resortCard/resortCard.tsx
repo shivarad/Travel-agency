@@ -1,31 +1,22 @@
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faShoppingCart } from '@fortawesome/free-solid-svg-icons'
+
 import {
   CardWraper,
   Detail,
   Image,
-  AddToBtn,
-  BtnPrice,
-  BtnIcon,
-  BtnTitle,
 } from "./resortCardStyles";
 import { Resort } from '../../interfaces';
+import { Link } from 'react-router-dom';
+import AddToCardBtn from "../AddToCardBtn/addBtn";
 
 const ResortCard:React.FC<Resort> = ({id,title,price,imageUrl,description}:Resort) => {
   return (
     <CardWraper key={id}>
       <Image bgImg={imageUrl} />
       <Detail>
-        <h1>{title}</h1>
+        <Link style={{textDecoration:"none"}} to={`/resorts/${id}`}><h1 >{title}</h1></Link>
         <p>{description}</p>
       </Detail>
-      <AddToBtn>
-        <BtnPrice>{price} </BtnPrice>
-        <BtnIcon>
-        <FontAwesomeIcon icon={faShoppingCart} />
-                </BtnIcon>
-        <BtnTitle>Add to Cart</BtnTitle>
-      </AddToBtn>
+      <AddToCardBtn price={price}/>
     </CardWraper>
   );
 };
