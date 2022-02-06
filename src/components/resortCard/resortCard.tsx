@@ -6,17 +6,17 @@ import {
 } from "./resortCardStyles";
 import { Resort } from '../../interfaces';
 import { Link } from 'react-router-dom';
-import AddToCardBtn from "../AddToCardBtn/addBtn";
+import AddToBucketBtn from "../AddToBucketBtn/addBtn";
 
-const ResortCard:React.FC<Resort> = ({id,title,price,imageUrl,description}:Resort) => {
+const ResortCard= (params:{resort:Resort}) => {
   return (
-    <CardWraper key={id}>
-      <Image bgImg={imageUrl} />
+    <CardWraper key={params.resort.id}>
+      <Image bgImg={params.resort.imageUrl} />
       <Detail>
-        <Link style={{textDecoration:"none"}} to={`/resorts/${id}`}><h1 >{title}</h1></Link>
-        <p>{description}</p>
+        <Link style={{textDecoration:"none"}} to={`/resorts/${params.resort.id}`}><h1 >{params.resort.title}</h1></Link>
+        <p>{params.resort.description}</p>
       </Detail>
-      <AddToCardBtn price={price}/>
+      <AddToBucketBtn resort={params.resort}/>
     </CardWraper>
   );
 };

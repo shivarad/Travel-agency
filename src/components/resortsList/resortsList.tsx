@@ -11,11 +11,7 @@ const ResortsList: React.FC<ResortsProps> = ({ resorts }: ResortsProps) => {
       {resorts?resorts.map((item) => (
         <ResortCard
           key={item.id}
-          id={item.id}
-          title={item.title}
-          description={item.description}
-          price={item.price}
-          imageUrl={item.imageUrl}
+          resort={item}
         />
       )):null}
     </ListWraper>

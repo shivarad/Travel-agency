@@ -10,7 +10,7 @@ import {
 import CustomBtn from "../../components/CustomBtn/CustomBtn";
 import Data from "../../data";
 import { Resort } from "../../interfaces";
-import AddToCardBtn from "../../components/AddToCardBtn/addBtn";
+import AddToBucketBtn from "../../components/AddToBucketBtn/addBtn";
 
 type ResortParams = {
   ResortId: string;
@@ -38,7 +38,7 @@ const ResortDetail: React.FC = () => {
         <Details>
           <h1>{ResortDetail?.title}</h1>
           <Description>{ResortDetail?.description}</Description>
-          <AddToCardBtn price={ResortDetail?.price ? ResortDetail.price : ""} />
+          <AddToBucketBtn resort={ResortDetail} />
         </Details>
       </PageWrapper>
     </>

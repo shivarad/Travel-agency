@@ -6,11 +6,11 @@ export const Header = styled.div`
   align-items:center;
   position: fixed;
   top: 0;
+  left:0;
+  right:0;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 5px rgba(0, 0, 0, 0.24);
   padding: 20px;
-  margin: 0;
   background-color: #f1f1f1;
-  width: 100%;
   height:40px;
 `;
 

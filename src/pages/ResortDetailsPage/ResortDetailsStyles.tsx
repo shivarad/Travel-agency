@@ -9,6 +9,7 @@ export const PageWrapper = styled.div`
   height: 92vh;
   background-color: #ffebc8;
   padding: 30px;
+  
 `;
 
 export const Description = styled.p`
@@ -37,10 +38,9 @@ export const Header = styled.div`
   top: 0;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 5px rgba(0, 0, 0, 0.24);
   padding: 20px;
-  margin: 0;
   background-color: #f1f1f1;
-  width: 100%;
-  left: -30px;
+  left: 0;
+  right:0;
   height:40px;
 `;
 

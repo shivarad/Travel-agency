@@ -1,0 +1,2 @@
+export const ADD_RESORT = "ADD_RESORT"
+export const REMOVE_RESORT = "REMOVE_RESORT"
