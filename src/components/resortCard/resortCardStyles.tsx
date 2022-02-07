@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const CardWraper = styled.div`
   float: left;
-  width: 30%;
+  width: 450px;
   min-width: 300px;
   background-color: #f1f1f1;
   margin: 1.5%;
@@ -39,7 +39,7 @@ export const Detail = styled.div`
   margin: 0 auto 2em;
   padding-top: 10.5em;
   padding-bottom: 1em;
-  height:300px;
+  height:fit-content;
   background-color: #ffebc8;
   color: #333;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 5px rgba(0, 0, 0, 0.24);
@@ -49,21 +49,24 @@ export const Detail = styled.div`
     font-family: "Bentham", serif;
     font-size: 1.5em;
     color: #474747;
+    height:100px;
     font-weight:bold;
-    padding:15px;
+    padding:5px;
     padding-bottom:0;
+    text-align:center;
   }
   p{
     font-family: sans-serif;
     font-size: 1em;
-    font-weight: 200;
-    padding:15px;
+    font-weight: 150;
+    padding:5px 15px;
+    height:50px;
     padding-top:10px;
     text-align:justify;
     overflow: hidden;
     text-overflow:ellipsis;
     display: -webkit-box;
-    -webkit-line-clamp: 7;
+    -webkit-line-clamp: 3;
     -webkit-box-orient: vertical;
 
   }

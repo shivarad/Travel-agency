@@ -1,5 +1,10 @@
 import React, { useEffect, useState } from "react";
-import { FilterBar } from "./ResortsStyles";
+import {
+  FilterBar,
+  PageWrapper,
+  PaginationButton,
+  PaginationWrapper,
+} from "./ResortsStyles";
 import { Resort } from "../../interfaces";
 import { sortArrayOfObjects } from "../../utils";
 import ResortsList from "../../components/resortsList/resortsList";
@@ -14,13 +19,33 @@ const Resorts = () => {
   const [priceRange, setPriceRange] = useState<string>("none");
   const [sortType, setSortType] = useState<string>("none");
 
+  /***********pagination states************************************************************************* */
+  const [currentPage, setCurentPage] = useState(0);
+  const itemsPerPage = 20;
+  const [currentPageItems, setCurrentPageItems] = useState<any[]>([]);
+  const totalPages = resorts ? Math.ceil(resorts.length / itemsPerPage) : 0;
 
-  useEffect(()=>{
-      if(priceRange!=="none")
-      filterData();
-  },[priceRange])
+  const nextPage = () => {
+    if (currentPage !== totalPages - 1 && totalPages !== 0)
+      setCurentPage(currentPage + 1);
+  };
+  const prevPage = () => {
+    if (currentPage !== 0 && totalPages !== 0) setCurentPage(currentPage - 1);
+  };
+  useEffect(() => {
+    if (resorts)
+      setCurrentPageItems(
+        resorts?.slice(currentPage, currentPage + itemsPerPage)
+      );
+  }, [currentPage, resorts]);
 
-  
+ 
+  /**************************************************************************************************** */
+
+  useEffect(() => {
+    if (priceRange !== "none") filterData();
+  }, [priceRange]);
+
   const SortData = (data: Resort[] | null, type: string) => {
     if (data === null) return null;
     let filtered = [...data];
@@ -71,8 +96,9 @@ const Resorts = () => {
     if (priceRange !== "none") filteredData = filterByPrice(Data);
     if (searchTerm !== "")
       filteredData = filterByTitle(filteredData ? filteredData : Data);
-    if (sortType !== "none") filteredData = SortData(filteredData ? filteredData : Data, sortType);
-    setResorts(filteredData)
+    if (sortType !== "none")
+      filteredData = SortData(filteredData ? filteredData : Data, sortType);
+    setResorts(filteredData);
   };
 
   const SortSelectChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
@@ -88,14 +114,14 @@ const Resorts = () => {
   };
 
   const PriceSelectChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
-      const priceTerm=event.target.value
+    const priceTerm = event.target.value;
     setPriceRange(priceTerm);
-   //useEffect
+    //useEffect
   };
 
   return (
-    <>
-      <FilterBar >
+    <PageWrapper>
+      <FilterBar>
         <SearchBox handleClick={filterData} onChange={handleSearchChange} />
         <Select
           Hint="Filter by price"
@@ -116,13 +142,24 @@ const Resorts = () => {
             { title: "Title", value: "title" },
           ]}
         />
-        <CustomBtn  label="Reset Filter"/>
+        <CustomBtn label="Reset Filter" />
       </FilterBar>
-      <ResortsList
-        resorts={resorts}
-      />
       
-    </>
+      <ResortsList resorts={currentPageItems} />
+      
+      <PaginationWrapper>
+        <PaginationButton onClick={() => setCurentPage(0)}>
+          First
+        </PaginationButton>
+        <PaginationButton onClick={prevPage}>Prev</PaginationButton>
+        
+        <p>Page {currentPage + 1}  of  {totalPages}</p>
+        <PaginationButton onClick={nextPage}>Next</PaginationButton>
+        <PaginationButton onClick={() => setCurentPage(totalPages - 1)}>
+          Last
+        </PaginationButton>
+      </PaginationWrapper>
+    </PageWrapper>
   );
 };
 

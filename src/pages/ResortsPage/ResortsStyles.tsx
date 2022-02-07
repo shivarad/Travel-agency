@@ -1,7 +1,20 @@
 import styled from "styled-components";
 
+
+
+export const PageWrapper=styled.div`
+    display:flex;
+    flex-direction:column;
+    justify-content:space-between;
+    align-items:center;
+    width:100%;
+
+`
 export const FilterBar=styled.div`
     display:flex;
+    top:0;
+    left:0;
+    right:0;
     flex-direction:row;
     flex-wrap=wrap;
     margin:20px auto;
@@ -10,4 +23,29 @@ export const FilterBar=styled.div`
     margin-top:0;
     background-color: #f1f1f1;
     align-items:center;
+    width:100%;
+`
+
+export const PaginationWrapper=styled.div`
+    display:flex;
+    width:fit-content;
+    margin:20px;
+    align-items:center;
+    & p{
+        font-size:1rem;
+        font-weight:bold;
+        padding:20px;
+    }
+
+`
+
+export const PaginationButton=styled.button`
+    width:50px;
+    height:50px;
+    color:white;
+    background:#558564;
+    &:hover {
+        background-color: #564946;
+      }
+
 `

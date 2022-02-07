@@ -2,11 +2,12 @@ import styled from "styled-components";
 
 
 export const ListWraper=styled.div`
-display:flex-box;
-flex-wrap:wrap;
+display:flex;
 flex-direction:row;
-justify-content:space-between;
+justify-content:center;
+flex-wrap:wrap;
 margin:0 auto;
-width:90%;
+width:100%;
+
 `
 
