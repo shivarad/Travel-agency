@@ -14,6 +14,7 @@ c. Bucket
  
  8. At the resorts details page, user can see large picture of the resort, title, price, full description and Add to bucket button
  9. At the resorts list page, user can find in the header of the page button which redirects user to bucket page
+ 
  10. At the bucket page, user can see the list of added resorts
  11. At the bucket page, user can delete resort from this list
  12. At the bucket page, user can find in the header of the page button which redirects user to resorts list page

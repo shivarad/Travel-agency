@@ -1,10 +1,10 @@
 import { Button } from "./CustomBtnStyles"
 
 
-const CustomBtn=(props:{label:string})=>{
+const CustomBtn=(props:{label:string,onClick?:()=>void})=>{
 
     return(
-        <Button >{props.label}</Button>
+        <Button onClick={props.onClick}>{props.label}</Button>
     )
 }
 

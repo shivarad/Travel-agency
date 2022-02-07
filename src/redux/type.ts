@@ -1,13 +1,14 @@
 import { Resort } from "../interfaces";
 
-type BucketState = {
+
+
+export type BucketState = {
     bucket: Resort[]
   }
   
-  type BucketAction = {
+ export  type BucketAction = {
     type: string
     payload: Resort
   }
   
-  type DispatchType = (args: BucketAction) => BucketAction
   

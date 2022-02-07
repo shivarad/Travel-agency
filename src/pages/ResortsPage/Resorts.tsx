@@ -20,6 +20,7 @@ const Resorts = () => {
       filterData();
   },[priceRange])
 
+  
   const SortData = (data: Resort[] | null, type: string) => {
     if (data === null) return null;
     let filtered = [...data];
@@ -115,11 +116,12 @@ const Resorts = () => {
             { title: "Title", value: "title" },
           ]}
         />
-        <CustomBtn label="Reset Filter"/>
+        <CustomBtn  label="Reset Filter"/>
       </FilterBar>
       <ResortsList
         resorts={resorts}
       />
+      
     </>
   );
 };
