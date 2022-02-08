@@ -12,8 +12,11 @@ const reducer = (
   ): BucketState => {
     switch (action.type) {
       case actionTypes.ADD_RESORT:
-          let newBucket=[...state.bucket,action.payload]
-          newBucket=[...new Map(newBucket.map(item=>[item.id,item])).values()]
+        let newBucket=[];
+        if(state.bucket.find(item=>item.id===action.payload.id))
+          newBucket=[...state.bucket]
+        else
+          newBucket=[...state.bucket,action.payload]
         return {
           ...state,
           bucket: newBucket,

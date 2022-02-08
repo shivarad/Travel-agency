@@ -3,6 +3,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faShoppingCart } from "@fortawesome/free-solid-svg-icons";
 import { Resort } from "../../interfaces";
 import { useDispatch } from "react-redux";
+//import { AppDispatch } from "../../redux/store";
 import { addToBucket } from "../../redux/actionCreators";
 import { ToastContainer,toast, Slide } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -25,9 +26,11 @@ const notify = (title:string) =>{
 }
 
 const AddToBucketBtn = (params: { resort: Resort |null}) => {
-  const dispatch = useDispatch();
+ // const dispatch = useDispatch<AppDispatch>();
+ const dispatch = useDispatch();
 
   const onAdd= (resort: Resort|null) => {
+    console.log("Add")
     if(resort){
       dispatch(addToBucket(resort))
       notify(resort.title)
