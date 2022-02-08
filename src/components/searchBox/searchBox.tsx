@@ -6,10 +6,11 @@ import React from "react";
 const SearchBox = (props: {
   onChange: React.ChangeEventHandler<HTMLInputElement>;
   handleClick: React.MouseEventHandler<HTMLButtonElement>;
+  value:string
 }) => {
   return (
     <div style={{width:"fit-content"}}>
-      <SearchInput placeholder="Search..." onChange={props.onChange} />
+      <SearchInput placeholder="Search..." onChange={props.onChange} value={props.value}/>
       <SearchBtn onClick={props.handleClick}>
         <FontAwesomeIcon icon={faSearch} />
       </SearchBtn>

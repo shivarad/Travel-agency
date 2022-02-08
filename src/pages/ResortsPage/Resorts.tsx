@@ -71,6 +71,14 @@ const Resorts = () => {
     }
     return filtered;
   };
+  /*****************filter functions****************************************** */
+
+  const resetFilter=()=>{
+    setSearchTerm("");
+    setSortType("none");
+    setPriceRange("none");
+    setResorts(Data);
+  }
 
   const filterByTitle = (data: Resort[]) => {
     const filteredData = data.filter((item) =>
@@ -101,6 +109,8 @@ const Resorts = () => {
     setResorts(filteredData);
   };
 
+  /************event handlers*********************************************************************** */
+  
   const SortSelectChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
     const sortT = event.target.value;
     setSortType(sortT);
@@ -122,9 +132,10 @@ const Resorts = () => {
   return (
     <PageWrapper>
       <FilterBar>
-        <SearchBox handleClick={filterData} onChange={handleSearchChange} />
+        <SearchBox value={searchTerm} onChange={handleSearchChange} handleClick={filterData} />
         <Select
           Hint="Filter by price"
+          value={priceRange}
           onSelectChange={PriceSelectChange}
           Options={[
             { title: "0-500", value: "0-500" },
@@ -136,13 +147,14 @@ const Resorts = () => {
         />
         <Select
           Hint="Sort By"
+          value={sortType}
           onSelectChange={SortSelectChange}
           Options={[
             { title: "Price", value: "price" },
             { title: "Title", value: "title" },
           ]}
         />
-        <CustomBtn label="Reset Filter" />
+        <CustomBtn onClick={resetFilter} label="Reset Filters" />
       </FilterBar>
       
       <ResortsList resorts={currentPageItems} />

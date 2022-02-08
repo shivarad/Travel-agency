@@ -14,7 +14,7 @@ const Bucket=()=>{
         <Header ><Link to="/" style={{textDecoration:"none"}}><CustomBtn label="Resorts List"/></Link></Header>
         
         <ListWrapper>
-            {bucket?bucket.map(item=><BucketItem key={item.id} item={item}/>):"Your Bucket is Empty!"}
+            {bucket.length>0?bucket.map(item=><BucketItem key={item.id} item={item}/>):"Your Bucket is Empty!"}
         </ListWrapper>
         </>
 

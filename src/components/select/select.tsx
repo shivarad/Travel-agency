@@ -5,13 +5,13 @@ interface selectOption {
   value: string;
 }
 const Select = (props: {
-  
+  value:string
   Hint: string;
   Options: selectOption[];
   onSelectChange: React.ChangeEventHandler<HTMLSelectElement>;
 }) => {
   return (
-    <SelectWrapper onChange={props.onSelectChange} >
+    <SelectWrapper onChange={props.onSelectChange} value={props.value}>
       <option value="none" disabled>{props.Hint}</option>
       {props.Options.map((option) => (
         <option key={option.value} value={option.value}>
