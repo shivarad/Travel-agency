@@ -4,10 +4,11 @@ import CustomBtn from "../../components/CustomBtn/CustomBtn";
 import { Link } from "react-router-dom";
 import BucketItem from "../../components/BucketItem/BucketItem";
 import { useTypedSelector } from "../../redux/useTypeSelector";
+import { shallowEqual } from "react-redux";
 
 const Bucket=()=>{
     const {bucket} = useTypedSelector
-    ((state) => state.bucket);
+    ((state) => state.bucket,shallowEqual);
 
     return(
         <>
