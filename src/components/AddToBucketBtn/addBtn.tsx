@@ -26,7 +26,6 @@ const notify = (title:string) =>{
 }
 
 const AddToBucketBtn = (params: { resort: Resort |null}) => {
- // const dispatch = useDispatch<AppDispatch>();
  const dispatch = useDispatch();
 
   const onAdd= (resort: Resort|null) => {

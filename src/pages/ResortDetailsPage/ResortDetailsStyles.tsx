@@ -4,8 +4,6 @@ export const PageWrapper = styled.div`
   display: flex;
   flex-direction: column;
   width: 100%;
-
-
   h2 {
     margin: 0 auto;
     padding: 15px 0;
@@ -20,14 +18,14 @@ export const DetailWrapper = styled.div`
   flex-wrap: wrap;
   justify-content: space-between;
   align-items: center;
+  min-height:calc(100vh-110px);
   padding: 50px;
-  margin: 15px;
+  margin: 20px;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 5px rgba(0, 0, 0, 0.24);
   background: #ffebc8;
   @media screen and (max-width: 1140px) {
     justify-content: center;
     padding: 30px;
-    margin: 20px;
   }
   @media screen and (max-width: 350px) {
     margin: 0px;

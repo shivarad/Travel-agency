@@ -30,7 +30,7 @@ export const Image = styled.div<{ bgImg: string }>`
   background-position: center;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 10px rgba(0, 0, 0, 0.24);
   transition: all ease-in 0.15s;
-  background-image:url(${props => props.bgImg});
+  background-image:url(${props => (CSS.escape(props.bgImg))});
   background-color:#f1f1f1;
   @media screen and (max-width: 390px) {
     height: 200px;
