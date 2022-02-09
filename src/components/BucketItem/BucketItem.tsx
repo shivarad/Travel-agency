@@ -14,6 +14,7 @@ const BucketItem=(props:{item:Resort})=>{
     }
     return(
         <BucketItemWrapper>
+        
         <ImgContainer>
             <img src={props.item.imageUrl} alt='item'/>
         </ImgContainer>
