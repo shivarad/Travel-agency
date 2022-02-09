@@ -2,17 +2,16 @@ import React, { useCallback, useEffect, useState } from "react";
 import {
   FilterBar,
   PageWrapper,
-  PaginationButton,
-  PaginationWrapper,
 } from "./ResortsStyles";
 import { Resort } from "../../interfaces";
-import { sortArrayOfObjects } from "../../utils";
+import { SortData, filterByPrice, filterByTitle } from "../../utils";
 import ResortsList from "../../components/resortsList/resortsList";
 import Data from "../../data";
 import SearchBox from "../../components/searchBox/searchBox";
 import Select from "../../components/select/select";
 import CustomBtn from "../../components/CustomBtn/CustomBtn";
 import BackToTopBtn from "../../components/BackToTopButton/backToTopButton";
+import Pagination from "../../components/pagination/pagination";
 
 const Resorts = () => {
   const [resorts, setResorts] = useState<Resort[] | null>(Data);
@@ -20,19 +19,12 @@ const Resorts = () => {
   const [priceRange, setPriceRange] = useState<string>("none");
   const [sortType, setSortType] = useState<string>("none");
 
-  /***********pagination states************************************************************************* */
+  /***********pagination states and functions************************************************/
   const [currentPage, setCurentPage] = useState(0);
   const itemsPerPage = 20;
   const [currentPageItems, setCurrentPageItems] = useState<Resort[]>([]);
   const totalPages = resorts ? Math.ceil(resorts.length / itemsPerPage) : 0;
 
-  const nextPage = () => {
-    if (currentPage !== totalPages - 1 && totalPages !== 0)
-      setCurentPage(currentPage + 1);
-  };
-  const prevPage = () => {
-    if (currentPage !== 0 && totalPages !== 0) setCurentPage(currentPage - 1);
-  };
   useEffect(() => {
     if (resorts)
       setCurrentPageItems(
@@ -40,86 +32,40 @@ const Resorts = () => {
       );
   }, [currentPage, resorts]);
 
- 
-  
-   /*****************filter functions****************************************** */
+  /*****************filter functions****************************************** */
 
-   const resetFilter=()=>{
+  const resetFilter = () => {
     setSearchTerm("");
     setSortType("none");
     setPriceRange("none");
-    setResorts(Data);
-  }
-
-  const filterByTitle = (data: Resort[]) => {
-    const filteredData = data.filter((item) =>
-      item.title.toLocaleLowerCase().includes(searchTerm.toLocaleLowerCase())
-    );
-    return filteredData;
+    setResorts([...Data]);
   };
 
-  const filterByPrice = (data: Resort[]) => {
-    const Range = priceRange.split("-");
-    const filter = data.filter(
-      (item) =>
-        parseInt(item.price.substring(0, item.price.length)) >=
-          parseInt(Range[0]) &&
-        parseInt(item.price.substring(0, item.price.length)) <
-          parseInt(Range[1])
-    );
-    return filter;
-  };
-
-  
-  const SortData = (data: Resort[] | null, type: string) => {
-    if (data === null) return null;
-    let filtered = [...data];
-    switch (type) {
-      case "title": {
-        filtered = sortArrayOfObjects(data, type as keyof Resort, "ascending");
-
-        break;
-      }
-      case "price": {
-        filtered = data.sort(
-          (a, b) =>
-            parseInt(a.price.substring(0, a.price.length)) -
-            parseInt(b.price.substring(0, b.price.length))
-        );
-
-        break;
-      }
-
-      default: {
-        break;
-      }
-    }
-    return filtered;
-  };
- 
   const filterData = useCallback(() => {
     let filteredData = null;
-    if (priceRange !== "none") filteredData = filterByPrice(Data);
+    if (priceRange !== "none") filteredData = filterByPrice(Data, priceRange);
     if (searchTerm !== "")
-      filteredData = filterByTitle(filteredData ? filteredData : Data);
+      filteredData = filterByTitle(
+        filteredData ? filteredData : Data,
+        searchTerm
+      );
     if (sortType !== "none")
-      filteredData = SortData(filteredData ? filteredData : Data, sortType);
+      filteredData = SortData(filteredData?.length ? filteredData : Data, sortType);
     setResorts(filteredData);
-  },[priceRange,searchTerm,sortType,Data]);
+  }, [priceRange, searchTerm, sortType, Data]);
+
   /**************************************************************************************************** */
 
   useEffect(() => {
     if (priceRange !== "none") filterData();
-  }, [priceRange,filterData]);
-
-  
+  }, [priceRange, filterData]);
 
   /************event handlers*********************************************************************** */
-  
+
   const SortSelectChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
     const sortT = event.target.value;
     setSortType(sortT);
-    setResorts(SortData(resorts, sortT));
+    setResorts(SortData(resorts?.length?resorts:Data, sortT));
   };
 
   const handleSearchChange: React.ChangeEventHandler<HTMLInputElement> = (
@@ -137,17 +83,21 @@ const Resorts = () => {
   return (
     <PageWrapper>
       <FilterBar>
-        <SearchBox value={searchTerm} onChange={handleSearchChange} handleClick={filterData} />
+        <SearchBox
+          value={searchTerm}
+          onChange={handleSearchChange}
+          handleClick={filterData}
+        />
         <Select
           Hint="Filter by price"
           value={priceRange}
           onSelectChange={PriceSelectChange}
           Options={[
-            { title: "0-500", value: "0-500" },
-            { title: "500-700", value: "500-700" },
-            { title: "700-1000", value: "700-1000" },
-            { title: "1000-2000", value: "1000-2000" },
-            { title: "2000-3000", value: "2000-3000" },
+            { title: "0-500 $", value: "0-500" },
+            { title: "500-700 $", value: "500-700" },
+            { title: "700-1000 $", value: "700-1000" },
+            { title: "1000-2000 $", value: "1000-2000" },
+            { title: "2000-3000 $", value: "2000-3000" },
           ]}
         />
         <Select
@@ -161,22 +111,10 @@ const Resorts = () => {
         />
         <CustomBtn onClick={resetFilter} label="Reset Filters" />
       </FilterBar>
-      
+
       <ResortsList resorts={currentPageItems} />
-      <BackToTopBtn/>
-      <PaginationWrapper>
-        <PaginationButton onClick={() => setCurentPage(0)}>
-          First
-        </PaginationButton>
-        <PaginationButton onClick={prevPage}>Prev</PaginationButton>
-        
-        <p>Page {currentPage + 1}  of  {totalPages}</p>
-        <PaginationButton onClick={nextPage}>Next</PaginationButton>
-        <PaginationButton onClick={() => setCurentPage(totalPages - 1)}>
-          Last
-        </PaginationButton>
-      </PaginationWrapper>
-      
+      <BackToTopBtn />
+      <Pagination currentPage={currentPage} setCurentPage={setCurentPage} totalPages={totalPages}/>
     </PageWrapper>
   );
 };
