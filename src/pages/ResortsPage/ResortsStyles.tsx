@@ -20,14 +20,18 @@ export const FilterBar=styled.div`
     gap:25px;
     flex-wrap:wrap;
     margin:20px auto;
+    padding-left:20px;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 5px rgba(0, 0, 0, 0.24);
-    padding:20px;
     margin-top:0;
     background-color: #f1f1f1;
     align-items:center;
     width:100%;
+    
     @media screen and (max-width: 830px) {
         justify-content:center;
+        padding-left:0px;
+        padding-top:15px;
+
  
       }
 `

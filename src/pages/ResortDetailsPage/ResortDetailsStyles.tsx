@@ -4,7 +4,8 @@ export const PageWrapper = styled.div`
   display: flex;
   flex-direction: column;
   width: 100%;
-  //background:#ffebc8;
+
+
   h2 {
     margin: 0 auto;
     padding: 15px 0;
@@ -74,4 +75,5 @@ export const Header = styled.div`
   left: 0;
   right: 0;
   height: 70px;
+  
 `;
