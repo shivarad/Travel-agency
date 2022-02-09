@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import {
   FilterBar,
   PageWrapper,
@@ -23,7 +23,7 @@ const Resorts = () => {
   /***********pagination states************************************************************************* */
   const [currentPage, setCurentPage] = useState(0);
   const itemsPerPage = 20;
-  const [currentPageItems, setCurrentPageItems] = useState<any[]>([]);
+  const [currentPageItems, setCurrentPageItems] = useState<Resort[]>([]);
   const totalPages = resorts ? Math.ceil(resorts.length / itemsPerPage) : 0;
 
   const nextPage = () => {
@@ -41,40 +41,10 @@ const Resorts = () => {
   }, [currentPage, resorts]);
 
  
-  /**************************************************************************************************** */
+  
+   /*****************filter functions****************************************** */
 
-  useEffect(() => {
-    if (priceRange !== "none") filterData();
-  }, [priceRange]);
-
-  const SortData = (data: Resort[] | null, type: string) => {
-    if (data === null) return null;
-    let filtered = [...data];
-    switch (type) {
-      case "title": {
-        filtered = sortArrayOfObjects(data, type as keyof Resort, "ascending");
-
-        break;
-      }
-      case "price": {
-        filtered = data.sort(
-          (a, b) =>
-            parseInt(a.price.substring(0, a.price.length)) -
-            parseInt(b.price.substring(0, b.price.length))
-        );
-
-        break;
-      }
-
-      default: {
-        break;
-      }
-    }
-    return filtered;
-  };
-  /*****************filter functions****************************************** */
-
-  const resetFilter=()=>{
+   const resetFilter=()=>{
     setSearchTerm("");
     setSortType("none");
     setPriceRange("none");
@@ -100,7 +70,34 @@ const Resorts = () => {
     return filter;
   };
 
-  const filterData = () => {
+  
+  const SortData = (data: Resort[] | null, type: string) => {
+    if (data === null) return null;
+    let filtered = [...data];
+    switch (type) {
+      case "title": {
+        filtered = sortArrayOfObjects(data, type as keyof Resort, "ascending");
+
+        break;
+      }
+      case "price": {
+        filtered = data.sort(
+          (a, b) =>
+            parseInt(a.price.substring(0, a.price.length)) -
+            parseInt(b.price.substring(0, b.price.length))
+        );
+
+        break;
+      }
+
+      default: {
+        break;
+      }
+    }
+    return filtered;
+  };
+ 
+  const filterData = useCallback(() => {
     let filteredData = null;
     if (priceRange !== "none") filteredData = filterByPrice(Data);
     if (searchTerm !== "")
@@ -108,7 +105,14 @@ const Resorts = () => {
     if (sortType !== "none")
       filteredData = SortData(filteredData ? filteredData : Data, sortType);
     setResorts(filteredData);
-  };
+  },[priceRange,searchTerm,sortType,Data]);
+  /**************************************************************************************************** */
+
+  useEffect(() => {
+    if (priceRange !== "none") filterData();
+  }, [priceRange,filterData]);
+
+  
 
   /************event handlers*********************************************************************** */
   

@@ -1,18 +1,22 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Bucket from "./pages/BucketPage/Bucket";
-import NotFound from "./pages/NotFoundPage/NotFound";
-import ResortDetail from "./pages/ResortDetailsPage/ResortDetail";
-import Resorts from "./pages/ResortsPage/Resorts";
+import { lazy, Suspense } from "react";
+
+const ResortsListPage = lazy(() => import("./pages/ResortsPage/Resorts"));
+const ResortDetailPage = lazy(() => import("./pages/ResortDetailsPage/ResortDetail"));
+const BucketPage = lazy(() => import("./pages/BucketPage/Bucket"));
+const NotFoundPage = lazy(() => import("./pages/NotFoundPage/NotFound"));
 
 function App() {
   return (
     <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<Resorts />} />
-        <Route path="/resorts/:ResortId" element={<ResortDetail/>} />
-        <Route path="/bucket" element={<Bucket />} />
-        <Route path="*" element={<NotFound />} />
-      </Routes>
+      <Suspense fallback={"...loding"}>
+        <Routes>
+          <Route path="/" element={<ResortsListPage />} />
+          <Route path="/resorts/:ResortId" element={<ResortDetailPage />} />
+          <Route path="/bucket" element={<BucketPage />} />
+          <Route path="*" element={<NotFoundPage />} />
+        </Routes>
+      </Suspense>
     </BrowserRouter>
   );
 }
