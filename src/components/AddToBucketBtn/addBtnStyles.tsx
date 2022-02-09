@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { colors } from "../../styles/variables";
 
 export const BtnIcon = styled.span`
   transform: translateX(-100%);
@@ -10,7 +11,7 @@ export const BtnIcon = styled.span`
 export const BtnTitle = styled.span`
   z-index: 3;
   font-weight: bolder;
-  background: #558564;
+  background: ${colors.green};
 	border: 0;
 	margin: 0;
 `;
@@ -34,7 +35,7 @@ border: none;
 color: #eee;
 padding: 0;
 margin: 0;
-background: #564946;
+background: ${colors.brown};
 border: 0;
 margin: 0;
 z-index: 3; font-weight: bolder;

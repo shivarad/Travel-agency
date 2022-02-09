@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { colors } from "../../styles/variables";
 
 export const PageWrapper = styled.div`
   display: flex;
@@ -22,7 +23,7 @@ export const DetailWrapper = styled.div`
   padding: 50px;
   margin: 20px;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 5px rgba(0, 0, 0, 0.24);
-  background: #ffebc8;
+  background: ${colors.pink};
   @media screen and (max-width: 1140px) {
     justify-content: center;
     padding: 30px;
@@ -69,7 +70,7 @@ export const Header = styled.div`
   top: 0;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 5px rgba(0, 0, 0, 0.24);
   padding: 20px;
-  background-color: #f1f1f1;
+  background-color: ${colors.gray};
   left: 0;
   right: 0;
   height: 70px;

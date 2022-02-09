@@ -11,7 +11,7 @@ const SearchBox = (props: {
   return (
     <div style={{width:"fit-content"}}>
       <SearchInput placeholder="Search..." onChange={props.onChange} value={props.value}/>
-      <SearchBtn onClick={props.handleClick}>
+      <SearchBtn onClick={props.handleClick} aria-label="Search">
         <FontAwesomeIcon icon={faSearch} />
       </SearchBtn>
     </div>

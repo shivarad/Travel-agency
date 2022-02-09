@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { colors } from "../../styles/variables";
 
 
 
@@ -23,7 +24,7 @@ export const FilterBar=styled.div`
     padding-left:20px;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 5px rgba(0, 0, 0, 0.24);
     margin-top:0;
-    background-color: #f1f1f1;
+    background-color:${colors.gray};
     align-items:center;
     width:100%;
     
@@ -53,9 +54,9 @@ export const PaginationButton=styled.button`
     width:50px;
     height:50px;
     color:white;
-    background:#558564;
+    background:${colors.green};
     &:hover {
-        background-color: #564946;
+        background-color: ${colors.brown};
       }
 
 `

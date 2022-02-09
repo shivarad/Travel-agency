@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { colors } from "../../styles/variables";
 
 export const SearchInput = styled.input`
 height:45px;
@@ -10,7 +11,7 @@ border-radius:8px 0 0 8px ;
 outline: none;
 margin-right:0 !important;
   &:focus{
-    border: 1px solid #564946;
+    border: 1px solid ${colors.brown};
     transition: 0.35s ease;
     &::-webkit-input-placeholder{
       transition: opacity 0.45s ease; 
@@ -23,13 +24,12 @@ export const SearchBtn = styled.button`
   height: 45px;
   width: 45px;
   color: white;
-  background: #558564;
+  background: ${colors.green};
   padding: 8px;
   border-radius: 0 8px 8px 0;
   font-size: 1rem;
   margin-left: 0 !important;
-  border: 1px solid #564946;
   &:hover {
-    background-color: #564946;
+    background-color: ${colors.brown};
   }
 `;

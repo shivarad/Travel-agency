@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { colors } from "../../styles/variables";
 
 
 export const ToTopBtn=styled.div`
@@ -7,7 +8,7 @@ justify-content:center;
 border-radius:50%;
 width:70px;
 height:70px;
-background:#564946;
+background:${colors.brown};
 color:white;
 font-size:2.5rem;
 align-item:center;

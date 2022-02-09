@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { colors } from "../../styles/variables";
 
 export const CardWraper = styled.div`
   float: left;
@@ -46,7 +47,7 @@ flex-direction:column;
   padding-top: 10.5rem;
   padding-bottom: 1rem;
   height:430px;
-  background-color: #ffebc8;
+  background-color: ${colors.pink};
   color: #333;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 5px rgba(0, 0, 0, 0.24);
   transition: all ease-in 0.15s;

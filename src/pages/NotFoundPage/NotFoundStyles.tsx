@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { colors } from "../../styles/variables";
 
 
 export const PageWrapper=styled.div`
@@ -18,7 +19,7 @@ export const MessageWrapper=styled.div`
     align-items: center;
     width: fit-content;
     height: fit-content;
-    background: #ffebc8;
+    background: ${colors.pink};
     padding:20px;
     border-radius:8px;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 5px rgba(0, 0, 0, 0.24);
