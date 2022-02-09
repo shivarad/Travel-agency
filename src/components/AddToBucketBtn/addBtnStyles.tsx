@@ -3,7 +3,6 @@ import styled from "styled-components";
 export const BtnIcon = styled.span`
   transform: translateX(-100%);
   position: absolute;
-  //background: #333;
   z-index: 1;
   left: 0;
   top: 0;

@@ -32,14 +32,20 @@ export const Image = styled.div<{ bgImg: string }>`
   transition: all ease-in 0.15s;
   background-image:url(${props => props.bgImg});
   background-color:#f1f1f1;
+  @media screen and (max-width: 390px) {
+    height: 200px;
+  }
 `;
 
 export const Detail = styled.div`
+display:flex;
+justify-content:space-around;
+flex-direction:column;
   width: 95%;
-  margin: 0 auto 2em;
-  padding-top: 10.5em;
-  padding-bottom: 1em;
-  height:fit-content;
+  margin: 0 auto 2rem;
+  padding-top: 10.5rem;
+  padding-bottom: 1rem;
+  height:430px;
   background-color: #ffebc8;
   color: #333;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 5px rgba(0, 0, 0, 0.24);
@@ -47,21 +53,23 @@ export const Detail = styled.div`
   overflow:hidden;
   h1{
     font-family: "Bentham", serif;
-    font-size: 1.5em;
+    font-size: 1.5rem;
     color: #474747;
-    height:100px;
+    height:fit-content;
     font-weight:bold;
-    padding:5px;
-    padding-bottom:0;
     text-align:center;
+    @media screen and (max-width: 390px) {
+      font-size:1.3rem;
+
+    }
   }
   p{
     font-family: sans-serif;
-    font-size: 1em;
+    font-size: 1rem;
     font-weight: 150;
-    padding:5px 15px;
-    height:50px;
-    padding-top:10px;
+    line-height:1.5rem;
+    padding:0 15px;
+    height:75px;
     text-align:justify;
     overflow: hidden;
     text-overflow:ellipsis;

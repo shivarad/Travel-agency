@@ -12,6 +12,7 @@ import Data from "../../data";
 import SearchBox from "../../components/searchBox/searchBox";
 import Select from "../../components/select/select";
 import CustomBtn from "../../components/CustomBtn/CustomBtn";
+import BackToTopBtn from "../../components/BackToTopButton/backToTopButton";
 
 const Resorts = () => {
   const [resorts, setResorts] = useState<Resort[] | null>(Data);
@@ -158,7 +159,7 @@ const Resorts = () => {
       </FilterBar>
       
       <ResortsList resorts={currentPageItems} />
-      
+      <BackToTopBtn/>
       <PaginationWrapper>
         <PaginationButton onClick={() => setCurentPage(0)}>
           First
@@ -171,6 +172,7 @@ const Resorts = () => {
           Last
         </PaginationButton>
       </PaginationWrapper>
+      
     </PageWrapper>
   );
 };

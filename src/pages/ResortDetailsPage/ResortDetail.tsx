@@ -6,6 +6,7 @@ import {
   Details,
   Image,
   Header,
+  DetailWrapper,
 } from "./ResortDetailsStyles";
 import CustomBtn from "../../components/CustomBtn/CustomBtn";
 import Data from "../../data";
@@ -27,21 +28,23 @@ const ResortDetail: React.FC = () => {
       );
   }, []);
   return (
-    <>
-      <PageWrapper>
-        <Header>
-          <Link to="/bucket" style={{textDecoration:"none"}}>
-            <CustomBtn label="My Bucket List" />
-          </Link>
-        </Header>
+    <PageWrapper>
+      <Header>
+        <Link to="/bucket" style={{ textDecoration: "none" }}>
+          <CustomBtn label="My Bucket List" />
+        </Link>
+      </Header>
+      {ResortDetail?
+
+      <DetailWrapper>
         <Image src={ResortDetail?.imageUrl} />
         <Details>
-          <h1>{ResortDetail?.title}</h1>
+          <h2>{ResortDetail?.title}</h2>
           <Description>{ResortDetail?.description}</Description>
           <AddToBucketBtn resort={ResortDetail} />
         </Details>
-      </PageWrapper>
-    </>
+      </DetailWrapper>:<h3>No Such Resort Exists!</h3>}
+    </PageWrapper>
   );
 };
 

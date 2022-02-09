@@ -11,7 +11,7 @@ export const Header = styled.div`
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 5px rgba(0, 0, 0, 0.24);
   padding: 20px;
   background-color: #f1f1f1;
-  height:40px;
+  height:70px;
 `;
 
 export const ResortListBtn=styled.span`
@@ -28,7 +28,7 @@ export const ResortListBtn=styled.span`
 
 export const ListWrapper=styled.div`
     top:100px;
-    width:60%;
+    width:clamp(300px,90%,900px);
     margin:100px auto;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 5px rgba(0, 0, 0, 0.24);
     padding:10px;
