@@ -48,7 +48,7 @@ flex-direction:column;
   padding-bottom: 1rem;
   height:430px;
   background-color: ${colors.pink};
-  color: #333;
+  color: black;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 5px rgba(0, 0, 0, 0.24);
   transition: all ease-in 0.15s;
   overflow:hidden;

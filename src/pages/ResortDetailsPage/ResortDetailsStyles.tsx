@@ -38,11 +38,16 @@ export const Description = styled.p`
   line-height: 1.5rem;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 5px rgba(0, 0, 0, 0.24);
   background-color: #fff;
+  font-family: sans-serif;
+
 `;
 
 export const Details = styled.div`
   width: 40%;
   min-width: 300px;
+  h2{
+    font-family: "Bentham", serif;
+  }
   @media screen and (max-width: 1140px) and (min-width: 900px) {
     width: 80%;
   }
