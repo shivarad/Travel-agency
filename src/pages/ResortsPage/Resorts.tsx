@@ -4,7 +4,7 @@ import {
   PageWrapper,
 } from "./ResortsStyles";
 import { Resort } from "../../interfaces";
-import { SortData, filterByPrice, filterByTitle } from "../../utils";
+import { sortData, filterByPrice, filterByTitle } from "../../utils";
 import ResortsList from "../../components/resortsList/resortsList";
 import Data from "../../data";
 import SearchBox from "../../components/searchBox/searchBox";
@@ -50,7 +50,7 @@ const Resorts = () => {
         searchTerm
       );
     if (sortType !== "none")
-      filteredData = SortData(filteredData?.length ? filteredData : Data, sortType);
+      filteredData = sortData(filteredData?.length ? filteredData : Data, sortType);
     setResorts(filteredData);
   }, [priceRange, searchTerm, sortType, Data]);
 
@@ -65,7 +65,7 @@ const Resorts = () => {
   const SortSelectChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
     const sortT = event.target.value;
     setSortType(sortT);
-    setResorts(SortData(resorts?.length?resorts:Data, sortT));
+    setResorts(sortData(resorts?.length?resorts:Data, sortT));
   };
 
   const handleSearchChange: React.ChangeEventHandler<HTMLInputElement> = (
@@ -105,8 +105,10 @@ const Resorts = () => {
           value={sortType}
           onSelectChange={SortSelectChange}
           Options={[
-            { title: "Price", value: "price" },
-            { title: "Title", value: "title" },
+            { title: "Price ASC", value: "+price" },
+            { title: "Price DESC", value: "-price" },
+            { title: "Title ASC", value: "+title" },
+            { title: "Title DESC", value: "-title" },
           ]}
         />
         <CustomBtn onClick={resetFilter} label="Reset Filters" />
